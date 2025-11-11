@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Untitled - Figma Export</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./styles.css">
+	<style>
+		/* Fallback if styles.css fails to load */
+		body{margin:0}
+	</style>
+</head>
+<body>
+	<!-- Page 1 -->
+	<main class="canvas">
+		<p class="text text--standalone" style="position:absolute; left:24px; top:24px;">Here is some text</p>
+
+		<section class="frame frame--1" aria-label="Frame 1" style="position:absolute; left:24px; top:100px;">
+			<p class="text text--in-frame">Here is some text in a frame.</p>
+			<!-- Avatar (Type=Image, Size=Large, Shape=Circle) -->
+			<div class="avatar" style="position:absolute; left:35px; top:50px;">
+				<img src="./assets/avatar-1.png" alt="Avatar" width="40" height="40">
+			</div>
+			<!-- Avatar Group (Spacing=Spaced, Show Overflow=true, Number=+1) -->
+			<div class="avatar-group avatar-group--spaced" role="group" aria-label="Avatar Group" style="position:absolute; left:109px; top:100px;">
+				<div class="avatar"><img src="./assets/avatar-2.png" alt="Avatar 1" width="40" height="40"></div>
+				<div class="avatar"><img src="./assets/avatar-3.png" alt="Avatar 2" width="40" height="40"></div>
+				<div class="avatar"><img src="./assets/avatar-4.png" alt="Avatar 3" width="40" height="40"></div>
+				<div class="avatar-overflow" aria-label="More">+1</div>
+			</div>
+		</section>
+
+		<!-- Button Danger (Primary / Default / Medium) -->
+		<button class="btn btn-danger" type="button" aria-label="Button" style="position:absolute; left:24px; top:52px;">Button</button>
+
+		<!-- Icon Button (Primary / Default / Medium) -->
+		<button class="icon-button" type="button" aria-label="Icon Button" style="position:absolute; left:200px; top:72px;">
+			<span class="icon-placeholder" aria-hidden="true"></span>
+		</button>
+
+		<!-- Product Info Card -->
+		<section class="product-card" aria-label="Product Info Card" style="position:absolute; left:348px; top:100px;">
+			<div class="product-card__image">
+				<img src="./assets/product-placeholder.png" alt="Product image placeholder">
+			</div>
+			<div class="product-card__body">
+				<p class="body-base">Text</p>
+				<p class="body-strong">$0</p>
+				<p class="body-small">Body text.</p>
+			</div>
+		</section>
+	</main>
+</body>
+</html>
+

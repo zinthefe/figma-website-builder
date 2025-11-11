@@ -1,0 +1,240 @@
+:root {
+	/* Typography from style_QGBKPH */
+	--font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+	--font-size-12: 12px;
+	--line-height-12: 1.2102272511; /* matches Figma's computed line height ratio */
+	--font-weight-regular: 400;
+
+	/* Colors from fills */
+	--color-black: #000000; /* fill_5IEI77 */
+	--color-white: #FFFFFF; /* fill_B7MOEL */
+	--color-bg-overflow: #F5F5F5; /* fill_6B5RPD */
+	--color-text-muted: #757575; /* fill_WUQWBT */
+
+	/* Canvas defaults */
+	--page-padding: 24px;
+	--page-max-width: 1200px;
+	--frame-1-width: 300px;  /* layout_V90UG9 */
+	--frame-1-height: 184px; /* layout_V90UG9 */
+	--avatar-size: 40px;        /* layout_0KY1TJ / VSXX4X */
+	--avatar-radius: 9999px;
+	--avatar-group-gap: 4px;    /* layout_XV4NYP gap */
+	--overflow-radius: 8px;     /* overflow frame radius */
+	--overflow-padding-y: 5px;  /* layout_VJW39J padding (top/bottom) */
+	--overflow-padding-x: 4px;  /* layout_VJW39J padding (left/right) */
+	--overflow-width: 24px;     /* layout_VJW39J width */
+
+	/* Button tokens */
+	--btn-danger-bg: #EC221F;   /* fill_M21VPA */
+	--btn-danger-border: #C00F0C; /* stroke_PF3AD7 */
+	--btn-danger-text: #FEE9E7; /* fill_1JMECR */
+
+	/* Icon button */
+	--icon-button-bg: #2C2C2C;  /* fill_IYMQMV */
+	--icon-button-border: #2C2C2C; /* stroke_FTID9V */
+	--icon-size: 20px;          /* layout_G1BXOW */
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+	height: 100%;
+}
+
+body {
+	font-family: var(--font-family);
+	margin: 0;
+	color: var(--color-black);
+	background: #f7f7f8;
+}
+
+.canvas {
+	margin: 0 auto;
+	max-width: var(--page-max-width);
+	padding: var(--page-padding);
+	position: relative; /* for absolute positioning of elements based on Figma coordinates */
+}
+
+.text {
+	font-size: var(--font-size-12);
+	line-height: var(--line-height-12);
+	font-weight: var(--font-weight-regular);
+	color: var(--color-black);
+	margin: 0 0 12px 0;
+}
+
+/* Standalone text element on the canvas ("Here is some text") */
+.text--standalone {
+	/* No explicit position in Figma, keep document flow */
+}
+
+/* Frame 1 */
+.frame {
+	background: var(--color-white);
+	border-radius: 0;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.04); /* light outline to visualize edges on light bg */
+}
+
+.frame--1 {
+	width: var(--frame-1-width);
+	height: var(--frame-1-height);
+	position: relative;
+}
+
+/* Text inside Frame 1 at x:35, y:20; width:163, height:15 */
+.text--in-frame {
+	position: absolute;
+	left: 35px;
+	top: 20px;
+	width: 163px;
+	height: 15px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/* Avatar (circle image, 40x40) */
+.avatar {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--avatar-size);
+	height: var(--avatar-size);
+	border-radius: var(--avatar-radius);
+	overflow: hidden;
+	background: var(--color-white);
+}
+.avatar img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: var(--avatar-radius);
+}
+
+/* Avatar Group: row with 4px gap, center-aligned */
+.avatar-group {
+	display: inline-flex;
+	align-items: center; /* layout_XV4NYP alignItems */
+	gap: var(--avatar-group-gap);
+}
+.avatar-group .avatar {
+	flex: 0 0 auto;
+	width: var(--avatar-size);
+	height: var(--avatar-size);
+}
+
+/* Overflow chip (+1) */
+.avatar-overflow {
+	display: inline-flex;
+	justify-content: center;    /* layout_VJW39J justifyContent */
+	align-items: center;        /* layout_VJW39J alignItems */
+	background: var(--color-bg-overflow);
+	color: var(--color-text-muted);
+	border-radius: var(--overflow-radius);
+	padding: var(--overflow-padding-y) var(--overflow-padding-x);
+	min-width: var(--overflow-width);
+	height: calc(var(--avatar-size) - 10px); /* approximate hug height */
+	font-family: var(--font-family);
+	font-size: 14px; /* Body Small fontSize */
+	line-height: 1.4; /* Body Small lineHeight */
+	text-align: center;
+}
+
+/* Basic responsiveness: keep exact sizes on small screens, allow scrolling */
+@media (max-width: 360px) {
+	.canvas {
+		padding: 16px;
+	}
+}
+
+/* Buttons */
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;                   /* layout_CFVEIQ gap */
+	padding: 12px;              /* layout_CFVEIQ padding */
+	border-radius: 8px;
+	border: 1px solid transparent;
+	font-family: var(--font-family);
+	font-size: 16px;            /* Single Line/Body Base font size */
+	line-height: 1;             /* Single Line/Body Base line-height */
+	cursor: pointer;
+}
+.btn-danger {
+	background: var(--btn-danger-bg);
+	border-color: var(--btn-danger-border);
+	color: var(--btn-danger-text);
+}
+
+/* Icon Button (40x40 assumed for Medium; center 20x20 icon) */
+.icon-button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	border-radius: 32px;
+	background: var(--icon-button-bg);
+	border: 1px solid var(--icon-button-border);
+	cursor: pointer;
+}
+.icon-button .icon-placeholder {
+	display: block;
+	width: var(--icon-size);
+	height: var(--icon-size);
+	background: #fff; /* visual placeholder for an icon */
+	border-radius: 2px;
+	opacity: 0.9;
+}
+
+/* Product Info Card */
+.product-card {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;                  /* layout_6YGCV5 gap */
+	padding: 16px;              /* layout_6YGCV5 padding */
+	border: 1px solid #D9D9D9;  /* stroke_HTXIA1 */
+	border-radius: 8px;
+	background: var(--color-white);
+	max-width: 240px; /* matches body width 208 + padding/gaps close to Figma */
+}
+.product-card__image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 247px;              /* layout_CYC8ZS height */
+	background: #E3E3E3;        /* Image Placeholder secondary color */
+	overflow: hidden;
+}
+.product-card__image img {
+	max-width: 100%;
+	max-height: 100%;
+	object-fit: contain;        /* Image Placeholder FIT/contain */
+}
+.product-card__body {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;                   /* layout_AJH1OR gap */
+	width: 208px;               /* layout_AJH1OR width */
+}
+.body-base {
+	font-size: 16px;            /* Body Base */
+	line-height: 1.4;
+	color: #1E1E1E;             /* fill_LWLR0N */
+	margin: 0;
+}
+.body-strong {
+	font-size: 16px;            /* Body Strong */
+	line-height: 1.4;
+	font-weight: 600;
+	color: #1E1E1E;             /* fill_LWLR0N */
+	margin: 0;
+}
+.body-small {
+	font-size: 14px;            /* Body Small */
+	line-height: 1.4;
+	color: var(--color-text-muted);
+	margin: 0;
+}
